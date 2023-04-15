@@ -1,0 +1,108 @@
+全局配置用户名or邮箱
+	git config --golbal user.name 'xxx'
+	git config --golbal user.email 'xxx'
+查看全局配置指令
+	git config --list --golbal
+	git config user.name
+	git config user.email
+获取git信息参考手册
+	git help config
+在终端显示简洁的帮助信息
+	git config -h
+在已有的目录中创建一个git仓库，或者在创建的时候初始化一个本地仓库
+	git init
+查看文件的状态
+	git status
+	简洁状态命令
+	git status -s
+跟踪一个新文件，放入暂存区
+	git add
+提交到本地仓库
+	git commit -m '提交信息'
+撤销对文件的修改
+	git checkout -- '要撤销的文件名
+将暂存区的文件移除
+	git reset HEAD  '要移除的文件名'
+将已经跟踪并修改的文件直接从工作区存到本地仓库
+	git commit -a -m '提交信息'
+从仓库和文件中用时移除文件
+	git rm -f '文件名'
+只从仓库中移除文件
+	git rm --crched '文件名'
+按时间先后顺序列出所有的提交历史，最近的提交排在最上面
+	git log
+
+只展示最新的两条提交历史，数字可以按需进行填写
+	git log -2
+
+ 在一行上展示最近两条提交历史的信息
+	git log -2 --pretty=oneline
+
+在一行上展示最近两条提交历史的信息，并自定义输出的格式11 # %h 提交的简写哈希值%an作者名字%ar作者修订日期，按多久以
+	git log -2 --pretty=format:"%h l %an ! %ar  %s"
+在一行上展示所有的提交历史
+	git log --pretty=oneline
+使用 git reset --hard 命令，根据指定的提交 ID 回退到指定版本
+	git reset --hard <CommitID>
+在旧版本中使用 git reflog --pretty=oneline 命令，查看命令操作
+	git reflog --pretty=oneline
+再次根据最新的提交 ID，跳转到最新的版本
+	git reset --hard <CommitID>
+----------------------------------------------------------
+将本地仓库上传到github，https
+连接
+git remote add origin 'github（https）地址'
+提交
+git push -u origin master
+下次更新提交
+git push
+
+-----------------------------------------------------------
+生成ssh key
+ssh-keygen -t ras -b 4096 -C '注册github邮箱地址'
+生成id
+
+监测自己key是否配置成功
+	ssh -T git@github.com
+-----------------------------------------------------------
+将远程仓库克隆到本地
+git clone '远程仓库地址'
+-----------------------------------------------------------
+查看项目分支
+	git branch
+创建分支
+	git branch '分支名'
+切换指定分支
+	git checkout  '分支名'
+创建指定名称并切换
+	git checkout -b '分支名'
+分支合并
+   先切换主分支
+	git checkout '主分支'
+   再合并
+	git merge '分支名'
+删除分支
+	git branch -d  '分支名'
+	如果没合并之前删
+	-D
+分支发生冲突，修改了相同的文件
+	需要手动解决
+	git add .
+	git commit -m '提交信息'
+-----------------------------------------------
+-u 表示把本地分支和远程分支进行关联，只在第一次推送的时候需要带 -u 参数
+	 git push -u 远程仓库的别名 本地分支名称:远程分支名称
+
+如果希望远程分支的名称和本地分支名称保持一致，可以对命令进行简化:
+	git push -u origin payment
+-------------------------------------------------------------------
+查看远程仓库所有分支名称
+	git remote show '远程仓库名称'
+从远程仓库中，把对应的远程分支下载到本地仓库，保持本地分支和远程分支名称相同
+	git checkout '远程分支的名称'
+ 从远程仓库中，把对应的远程分支下载到本地仓库，并把下载的本地分支进行重命名
+	git checkout -b 本地分支名称 远程库名称/远程分支名称
+拉取远程分支
+	git pull
+删除远程分支
+	git push origin --delete '分支名'
